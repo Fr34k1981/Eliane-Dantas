@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- ESTILOS GERAIS --- */
+        /* --- ESTILOS GERAIS ORIGINAIS --- */
         :root {
             --bg-fundo: #1a1a1d; 
             --bg-conteudo: #ffffff; 
@@ -55,7 +55,7 @@
 
         /* CONTAINER */
         .livro-container {
-            position: relative; width: 95%; max-width: 800px; height: 90vh; max-height: 850px;
+            position: relative; width: 95%; max-width: 900px; height: 94vh; max-height: 900px;
             background-color: var(--bg-conteudo); border-radius: 15px;
             box-shadow: 0 0 30px rgba(111, 0, 255, 0.3); 
             display: flex; flex-direction: column; overflow: hidden; border: 3px solid var(--cor-destaque);
@@ -70,164 +70,192 @@
         .area-conteudo-paginas::-webkit-scrollbar-thumb { background-color: var(--cor-destaque); border-radius: 4px; }
 
         .pagina-conteudo {
-            padding: 20px 30px; position: absolute; top: 0; left: 0; width: 100%; min-height: 100%;
+            padding: 35px 40px; position: absolute; top: 0; left: 0; width: 100%; min-height: 100%;
             box-sizing: border-box; display: none; opacity: 0; transition: opacity 0.3s ease;
             z-index: 1;
         }
         .pagina-conteudo.ativa { display: block; opacity: 1; animation: fadeIn 0.5s forwards; z-index: 10; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- HOME --- */
+        /* --- HOME TOTALMENTE ESPAÇADA --- */
         #pag1.ativa {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 15px; padding-top: 20px; padding-bottom: 20px;
+            display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+            gap: 20px; padding: 25px;
         }
 
         h1 {
-            font-family: var(--fonte-titulo); color: var(--cor-destaque); font-size: 2.5rem;
+            font-family: var(--fonte-titulo); color: var(--cor-destaque); font-size: 2.6rem;
             margin: 0; text-transform: uppercase; text-align: center; text-shadow: 2px 2px 0px #000;
-            line-height: 1; cursor: default; transition: all 0.3s ease;
+            line-height: 1.1; cursor: default; transition: all 0.3s ease;
         }
-        h1:hover { transform: scale(1.05); }
 
         .nome-destaque { color: var(--cor-secundaria); display: block; font-size: 3rem; transition: color 0.3s, text-shadow 0.3s; }
         h1:hover .nome-destaque { color: #fff; text-shadow: 0 0 15px var(--cor-secundaria), 2px 2px 0 #000; }
 
         .subtitulo-escola {
             font-family: var(--fonte-corpo); color: var(--cor-subtitulo); font-weight: bold;
-            text-transform: uppercase; font-size: 0.9rem; text-align: center; margin-top: 5px; transition: 0.3s;
+            text-transform: uppercase; font-size: 0.95rem; text-align: center; margin-top: 5px; letter-spacing: 1px;
         }
-        .subtitulo-escola:hover { letter-spacing: 1px; color: #d4b000; }
 
         .banner-container {
-            width: 100%; height: auto; max-height: 250px; display: flex; justify-content: center;
-            align-items: center; margin: 10px 0; padding: 5px; border: 2px dashed #ccc;
-            border-radius: 8px; overflow: hidden; cursor: zoom-in;
+            width: 100%; height: auto; max-height: 150px; display: flex; justify-content: center;
+            align-items: center; margin: 5px 0; padding: 6px; border: 2px dashed #bbb;
+            border-radius: 8px; overflow: hidden; cursor: zoom-in; background: #fafafa;
         }
         .banner-img {
             height: 100%; width: auto; max-width: 100%; object-fit: contain;
             border-radius: 4px; transition: transform 0.4s;
         }
-        .banner-container:hover .banner-img { transform: scale(1.15); }
+        .banner-container:hover .banner-img { transform: scale(1.05); }
 
-        .menu-lista {
-            display: flex; flex-direction: column; width: 100%; max-width: 280px; gap: 12px;
-            padding: 0; list-style: none; margin: 10px 0;
+        /* SEÇÃO DE DESTAQUE NO TOPO */
+        .secao-topo-destaque {
+            width: 100%;
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 5px;
         }
-        .menu-lista button {
-            background: #fff; border: 2px solid #333; color: #333; padding: 12px;
-            font-family: var(--fonte-titulo); font-size: 1.2rem; cursor: pointer;
-            border-radius: 6px; transition: 0.2s; text-align: center; letter-spacing: 1px;
-            box-shadow: 4px 4px 0 #ddd; width: 100%;
+
+        /* GRID REORGANIZADO E MENOS AGLOMERADO */
+        .grid-menu-abas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
         }
-        .menu-lista button:hover {
+        
+        .bloco-categoria {
+            background: #f8f9fa;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 3px 3px 0px #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .bloco-categoria:hover {
+            border-color: #cbd5e1;
+            box-shadow: 3px 3px 0px #cbd5e1;
+        }
+        
+        .titulo-categoria {
+            font-family: var(--fonte-titulo);
+            font-size: 1.3rem;
+            color: var(--cor-destaque);
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 6px;
+            letter-spacing: 0.8px;
+        }
+
+        .menu-lista-sub {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+        
+        .menu-lista-sub button {
+            background: #fff; border: 1.5px solid #475569; color: #1e293b; padding: 9px 12px;
+            font-family: var(--fonte-titulo); font-size: 1rem; cursor: pointer;
+            border-radius: 6px; transition: all 0.15s ease-in-out; text-align: left; letter-spacing: 0.5px;
+            box-shadow: 2px 2px 0 #cbd5e1; width: 100%;
+        }
+        .menu-lista-sub button:hover {
             background: var(--cor-destaque); color: #fff; border-color: var(--cor-destaque);
-            transform: translate(-3px, -3px); box-shadow: 6px 6px 0 #000;
+            transform: translate(-1px, -1px); box-shadow: 3px 3px 0 #000;
+        }
+        
+        .btn-principal-direto {
+            background: #fff; border: 2.5px solid #1e293b; color: #1e293b; padding: 12px;
+            font-family: var(--fonte-titulo); font-size: 1.15rem; cursor: pointer;
+            border-radius: 8px; transition: 0.2s; text-align: center; letter-spacing: 1px;
+            box-shadow: 3px 3px 0 #94a3b8; width: 100%; display: block; box-sizing: border-box;
+        }
+        .btn-principal-direto:hover {
+            background: var(--cor-secundaria); color: #fff; border-color: var(--cor-secundaria);
+            transform: translate(-2px, -2px); box-shadow: 4px 4px 0 #000;
         }
 
         /* --- INTERNAS --- */
         h2 { 
-            font-family: var(--fonte-titulo); color: #333; border-left: 5px solid var(--cor-secundaria); 
-            padding-left: 10px; margin-top: 0; transition: all 0.3s; cursor: default; width: 100%;
+            font-family: var(--fonte-titulo); color: #1e293b; border-left: 6px solid var(--cor-secundaria); 
+            padding-left: 14px; margin-top: 0; margin-bottom: 20px; transition: all 0.3s; cursor: default; width: 100%;
+            font-size: 2.2rem; text-transform: uppercase; letter-spacing: 1px;
         }
-        h2:hover { color: var(--cor-destaque); border-left-width: 15px; padding-left: 20px; }
+        h2:hover { color: var(--cor-destaque); border-left-width: 15px; padding-left: 24px; }
 
-        .texto-bio { color: #333; line-height: 1.6; font-size: 1rem; text-align: justify; margin-bottom: 15px; }
+        .texto-bio { color: #334155; line-height: 1.6; font-size: 1.05rem; text-align: justify; margin-bottom: 16px; }
 
         .foto-perfil-container {
-            width: 180px; height: auto; float: right; margin-left: 20px; margin-bottom: 10px;
+            width: 180px; height: auto; float: right; margin-left: 25px; margin-bottom: 15px;
             border: 3px solid var(--cor-destaque); border-radius: 8px; overflow: hidden;
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.1); transition: transform 0.3s;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.15); transition: transform 0.3s;
         }
         .foto-perfil-container:hover { transform: rotate(2deg) scale(1.05); } 
         .foto-perfil-img { width: 100%; height: auto; display: block; }
         .conteudo-com-foto::after { content: ""; display: table; clear: both; }
 
-        /* --- GALERIA SALA MAKER (PAG 3) --- */
-        .layout-projetos {
-            display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 15px;
-            align-items: start; margin-top: 20px;
-        }
-        .coluna-quadros { display: flex; flex-direction: column; gap: 15px; }
-
-        .quadro-pequeno {
-            border: 2px dashed #ccc; border-radius: 6px; padding: 5px;
-            background: #fff; text-align: center; transition: all 0.2s; cursor: zoom-in;
-        }
-        .quadro-pequeno:hover { 
-            transform: scale(1.05) translateY(-5px); border-color: var(--cor-destaque);
-            box-shadow: 0 5px 15px rgba(111, 0, 255, 0.2);
-        }
-
-        .img-quadro { width: 100%; height: 80px; object-fit: cover; border-radius: 4px; display: block; }
-        .legenda-quadro { margin: 5px 0 0 0; font-size: 0.8rem; color: var(--cor-destaque); font-weight: bold; text-transform: uppercase; }
-
-        .coluna-texto-projetos { padding: 0 10px; font-size: 0.95rem; color: #555; }
-
-        /* --- SLIDESHOW ESCOLA (PAG 4) --- */
+        /* --- SLIDESHOW ESCOLA --- */
         .container-escola { display: flex; flex-direction: column; align-items: center; gap: 20px; }
         
         .box-imagem-rotativa {
-            width: 100%; max-width: 600px; height: 350px; 
+            width: 100%; max-width: 600px; height: 320px; 
             border: 3px solid var(--cor-destaque); border-radius: 8px;
             overflow: hidden; position: relative; background: #000;
-            box-shadow: 5px 5px 0 rgba(0,0,0,0.2); cursor: zoom-in;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.2); cursor: zoom-in;
         }
-
         .slide-escola {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: contain; opacity: 0; transition: opacity 1s ease-in-out; 
         }
         .slide-escola.active { opacity: 1; }
 
-        /* --- VÍDEO E DADOS (PAG 5) --- */
-        .dados-pessoais {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
+        /* --- LABELS E DECORAÇÕES DE CONTEÚDO --- */
+        .badge-subaba {
+            display: inline-block; background: var(--cor-secundaria); color: #fff;
+            padding: 4px 12px; font-family: var(--fonte-titulo); border-radius: 4px;
+            font-size: 1rem; margin-bottom: 15px; letter-spacing: 0.8px; text-transform: uppercase;
         }
-        .dados-pessoais p { margin: 5px 0; font-weight: bold; font-size: 1.1rem; }
+
+        /* --- VÍDEO E DADOS (PAG CONTATO) --- */
+        .dados-pessoais { text-align: center; margin-bottom: 20px; color: #1e293b; }
+        .dados-pessoais p { margin: 6px 0; font-weight: bold; font-size: 1.1rem; }
 
         .dados-escola {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 15px;
-            border-top: 2px dashed #ddd;
-            border-bottom: 2px dashed #ddd;
-            color: #444;
+            text-align: center; margin-bottom: 20px; padding: 15px;
+            border-top: 2px dashed #cbd5e1; border-bottom: 2px dashed #cbd5e1; color: #334155;
         }
-        .dados-escola h3 {
-            color: var(--cor-destaque);
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        .dados-escola p { margin: 4px 0; font-size: 0.95rem; }
+        .dados-escola h3 { color: var(--cor-destaque); text-transform: uppercase; margin-bottom: 8px; font-size: 1.2rem; letter-spacing: 0.5px; }
+        .dados-escola p { margin: 4px 0; font-size: 1rem; }
 
-        /* MOLDURA DO VÍDEO */
         .video-container { width: 100%; max-width: 600px; margin: 20px auto; text-align: center; }
         .video-moldura {
-            position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0;
+            position: relative; padding-bottom: 56.25%; height: 0;
             overflow: hidden; border: 2px solid var(--cor-destaque); border-radius: 8px; background: #000;
         }
         .video-moldura iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-        /* Link fallback acessível */
-        .link-video-fallback {
-            display: inline-block; margin-top: 10px; color: var(--cor-destaque); text-decoration: none; font-weight: bold;
-        }
+        .link-video-fallback { display: inline-block; margin-top: 10px; color: var(--cor-destaque); text-decoration: none; font-weight: bold; font-size: 1rem;}
 
         .btn-voltar { 
-            margin-top: 20px; background: #333; color: #fff; border: none; 
-            padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; 
-            display: block; clear: both; transition: 0.2s;
+            margin-top: 25px; background: #1e293b; color: #fff; border: none; 
+            padding: 10px 20px; border-radius: 6px; font-family: var(--fonte-titulo); font-size: 1.1rem; letter-spacing: 0.5px; cursor: pointer; 
+            display: block; clear: both; transition: 0.2s; box-shadow: 2px 2px 0 #000;
         }
         .btn-voltar:hover { background: var(--cor-destaque); transform: scale(1.05); }
 
-        @media (max-width: 700px) {
-            .layout-projetos { grid-template-columns: 1fr 1fr; } 
-            .coluna-texto-projetos { grid-column: span 2; order: -1; margin-bottom: 15px; }
-            .box-imagem-rotativa { height: 250px; }
+        @media (max-width: 768px) {
+            .secao-topo-destaque { grid-template-columns: 1fr; gap: 10px; }
+            .grid-menu-abas { grid-template-columns: 1fr; gap: 15px; }
+            .box-imagem-rotativa { height: 220px; }
+            .livro-container { height: 96vh; }
+            .pagina-conteudo { padding: 20px; }
+            .foto-perfil-container { float: none; margin: 0 auto 15px auto; }
         }
     </style>
 </head>
@@ -240,24 +268,75 @@
     <div class="livro-container">
         <div class="area-conteudo-paginas">
 
+            <!-- ================= PAG 1: HOME (REESTRUTURADA E AMPLIADA) ================= -->
             <div id="pag1" class="pagina-conteudo ativa">
                 <div style="width: 100%; text-align: center;">
                     <h1>Portfólio <br> <span class="nome-destaque">Aleandro F.</span></h1>
-                    <div class="subtitulo-escola">PROATI - Prof. Paulo Americo Paganucci - 2025</div>
+                    <div class="subtitulo-escola">PROATI - Prof. Paulo Americo Paganucci</div>
                 </div>
+                
                 <div class="banner-container" onclick="abrirImagem('https://raw.githubusercontent.com/Fr34k1981/Portfolio/43f7c07e68e47ef2fae5a231e3e3407fd1a649c3/Foto%201.jpg')">
                     <img src="https://raw.githubusercontent.com/Fr34k1981/Portfolio/43f7c07e68e47ef2fae5a231e3e3407fd1a649c3/Foto%201.jpg" alt="Aleandro F." class="banner-img">
                 </div>
-                <ul class="menu-lista">
-                    <li><button type="button" onclick="mudarPagina('pag2')">01. QUEM SOU EU</button></li>
-                    <li><button type="button" onclick="mudarPagina('pag3')">02. SALA MAKER</button></li>
-                    <li><button type="button" onclick="mudarPagina('pag4')">03. A ESCOLA</button></li>
-                    <li><button type="button" onclick="mudarPagina('pag5')">04. CONTATO</button></li>
-                </ul>
+
+                <!-- DESTAQUE TOPO: ESCOLA E ESCOLA DOS SONHOS -->
+                <div class="secao-topo-destaque">
+                    <button class="btn-principal-direto" style="background-color: #fffde6;" onclick="mudarPagina('pag4')">🏫 A Escola</button>
+                    <button class="btn-principal-direto" style="background-color: #f0fdf4; border-color: #16a34a; color: #16a34a;" onclick="mudarPagina('escola_sonhos')">✨ Escola dos Sonhos</button>
+                </div>
+
+                <button class="btn-principal-direto" style="width:100%; max-width: 800px; margin-bottom: 5px;" onclick="mudarPagina('pag2')">👤 Quem Sou Eu</button>
+
+                <!-- BLOCOS EM GRID ESPAÇADO -->
+                <div class="grid-menu-abas">
+                    <!-- BLOCO: RECOMPOSIÇÃO -->
+                    <div class="bloco-categoria">
+                        <p class="titulo-categoria">🔄 Projeto Recomposição</p>
+                        <ul class="menu-lista-sub">
+                            <li><button type="button" onclick="mudarPagina('recomp_tutor')">» Professor Tutor</button></li>
+                            <li><button type="button" onclick="mudarPagina('recomp_eletivas')">» Eletivas Fundamentos</button></li>
+                            <li><button type="button" onclick="mudarPagina('recomp_orientacao')">» Orientação de Estudos</button></li>
+                        </ul>
+                    </div>
+
+                    <!-- BLOCO: PLATAFORMAS -->
+                    <div class="bloco-categoria">
+                        <p class="titulo-categoria">💻 Plataformas</p>
+                        <ul class="menu-lista-sub">
+                            <li><button type="button" onclick="mudarPagina('plat_matific')">» Matific</button></li>
+                            <li><button type="button" onclick="mudarPagina('plat_alura')">» Alura</button></li>
+                            <li><button type="button" onclick="mudarPagina('plat_redacao')">» Redação e Leitura</button></li>
+                            <li><button type="button" onclick="mudarPagina('plat_speak')">» Speak</button></li>
+                            <li><button type="button" onclick="mudarPagina('plat_tarefas')">» Tarefas</button></li>
+                            <li><button type="button" onclick="mudarPagina('plat_copa')">» Copa da Escola</button></li>
+                        </ul>
+                    </div>
+
+                    <!-- BLOCO: PROJETOS -->
+                    <div class="bloco-categoria">
+                        <p class="titulo-categoria">🚀 Projetos</p>
+                        <ul class="menu-lista-sub">
+                            <li><button type="button" onclick="mudarPagina('proj_erer')">» ERER</button></li>
+                            <li><button type="button" onclick="mudarPagina('proj_genero')">» Diversidade de Gênero</button></li>
+                        </ul>
+                    </div>
+
+                    <!-- BLOCO: CONVIVA -->
+                    <div class="bloco-categoria">
+                        <p class="titulo-categoria">🤝 Conviva</p>
+                        <ul class="menu-lista-sub">
+                            <li><button type="button" onclick="mudarPagina('conv_projetos')">» Projetos</button></li>
+                            <li><button type="button" onclick="mudarPagina('conv_acoes')">» Ações</button></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="btn-principal-direto" style="width:100%; max-width: 800px; margin-top: 10px; background-color: #f1f5f9;" onclick="mudarPagina('pag_contato')">📞 Contato / Fale Comigo</button>
             </div>
 
+            <!-- ================= QUEM SOU EU ================= -->
             <div id="pag2" class="pagina-conteudo">
-                <h2>01 // Sobre Aleandro</h2>
+                <h2>Sobre Aleandro</h2>
                 <div class="conteudo-com-foto">
                     <div class="foto-perfil-container">
                         <img src="https://raw.githubusercontent.com/Fr34k1981/Portfolio/82fc5ad632e8aeb376db0fdd2120bb10c54ddeff/IMG-20251013-WA0004.jpg" alt="Foto de Perfil" class="foto-perfil-img" onclick="abrirImagem(this.src)" style="cursor: zoom-in;">
@@ -265,47 +344,12 @@
                     <p class="texto-bio">Sou professor da Secretaria da Educação do Estado de São Paulo desde 2013, construindo ao longo desses anos uma trajetória pautada pelo compromisso com a formação humana, pelo diálogo e pela prática pedagógica responsável. Minha atuação abrange as áreas de História, Filosofia e Sociologia, sempre com foco na construção crítica do conhecimento e no fortalecimento da autonomia intelectual dos estudantes.</p>
                     <p class="texto-bio">Em 2024, consolidei uma etapa importante da minha carreira ao assumir o cargo na escola Paulo Américo Paganucci, conquistado por concurso público, reafirmando meu compromisso com a educação pública e com o desenvolvimento contínuo da minha prática docente. Esse período representa não apenas a continuidade do meu trabalho, mas também a maturidade profissional adquirida ao longo de mais de uma década de dedicação à rede estadual.</p>
                 </div>
-                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar</button>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
             </div>
 
-            <div id="pag3" class="pagina-conteudo">
-                <h2>02 // Sala Maker</h2>
-                <p style="color:#666; font-style: italic; text-align:center;">Projetos e Atividades em Destaque</p>
-
-                <div class="layout-projetos">
-                    <div class="coluna-quadros">
-                        <div class="quadro-pequeno" onclick="abrirImagem('https://raw.githubusercontent.com/Fr34k1981/Portfolio/2896fac196db608e769ec766e6e2a9836a11dc99/img1.jpg')">
-                            <img src="https://raw.githubusercontent.com/Fr34k1981/Portfolio/2896fac196db608e769ec766e6e2a9836a11dc99/img1.jpg" class="img-quadro"><p class="legenda-quadro">Ver foto</p>
-                        </div>
-                        <div class="quadro-pequeno" onclick="abrirImagem('https://raw.githubusercontent.com/Fr34k1981/Portfolio/b79cb2a10266765edf791e299108950e654d6fe2/img2.jpg')">
-                            <img src="https://raw.githubusercontent.com/Fr34k1981/Portfolio/b79cb2a10266765edf791e299108950e654d6fe2/img2.jpg" class="img-quadro"><p class="legenda-quadro">Ver foto</p>
-                        </div>
-                        <div class="quadro-pequeno" onclick="abrirImagem('https://raw.githubusercontent.com/Fr34k1981/Portfolio/b79cb2a10266765edf791e299108950e654d6fe2/img3.jpg')">
-                            <img src="https://raw.githubusercontent.com/Fr34k1981/Portfolio/b79cb2a10266765edf791e299108950e654d6fe2/img3.jpg" class="img-quadro"><p class="legenda-quadro">Ver foto</p>
-                        </div>
-                    </div>
-                    <div class="coluna-texto-projetos">
-                        <p style="text-align: justify; margin-bottom: 15px;">A Sala Maker é um espaço fundamental para estimular criatividade, inovação e aprendizagem prática na escola. Ali, os estudantes experimentam, testam ideias e desenvolvem projetos que conectam o conteúdo às demandas do mundo real.</p>
-                        <p style="text-align: justify; margin-bottom: 15px;">O PROATI fortalece esse trabalho ao integrar a tecnologia ao cotidiano escolar, oferecendo suporte aos professores e orientando o uso dos recursos digitais. Atua como ponte entre a prática pedagógica e as ferramentas tecnológicas, garantindo que a Sala Maker funcione de forma dinâmica, inclusiva e realmente transformadora.</p>
-                        <p style="font-weight: bold; color: var(--cor-destaque); margin-top: 10px; text-align: right;">Aleandro Ferreira</p>
-                    </div>
-                    <div class="coluna-quadros">
-                        <div class="quadro-pequeno" onclick="abrirImagem('https://raw.githubusercontent.com/Fr34k1981/Portfolio/b79cb2a10266765edf791e299108950e654d6fe2/img4.jpg')">
-                            <img src="https://raw.githubusercontent.com/Fr34k1981/Portfolio/b79cb2a10266765edf791e299108950e654d6fe2/img4.jpg" class="img-quadro"><p class="legenda-quadro">Ver foto</p>
-                        </div>
-                        <div class="quadro-pequeno" onclick="abrirImagem('https://raw.githubusercontent.com/Fr34k1981/Portfolio/b79cb2a10266765edf791e299108950e654d6fe2/img5.jpg')">
-                            <img src="https://raw.githubusercontent.com/Fr34k1981/Portfolio/b79cb2a10266765edf791e299108950e654d6fe2/img5.jpg" class="img-quadro"><p class="legenda-quadro">Ver foto</p>
-                        </div>
-                        <div class="quadro-pequeno" onclick="abrirImagem('https://raw.githubusercontent.com/Fr34k1981/Portfolio/b79cb2a10266765edf791e299108950e654d6fe2/img6.jpg')">
-                            <img src="https://raw.githubusercontent.com/Fr34k1981/Portfolio/b79cb2a10266765edf791e299108950e654d6fe2/img6.jpg" class="img-quadro"><p class="legenda-quadro">Ver foto</p>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar</button>
-            </div>
-
+            <!-- ================= A ESCOLA ================= -->
             <div id="pag4" class="pagina-conteudo">
-                <h2>03 // Paulo Américo Paganucci</h2>
+                <h2>Paulo Américo Paganucci</h2>
                 <div class="container-escola">
                     <div class="box-imagem-rotativa" onclick="clicarSlideAtual()">
                         <img src="https://raw.githubusercontent.com/Fr34k1981/Portfolio/8af9b8917eaa03224abb234d092f6db79928517d/img8.jpg" class="slide-escola active">
@@ -320,11 +364,114 @@
                         <p class="texto-bio">Para que todos esses recursos funcionem de maneira articulada e eficaz, o PROATI é indispensável. Ele orienta o uso das tecnologias, apoia professores, acompanha estudantes e garante que cada ferramenta digital contribua para a formação integral dentro das realidades e desafios do Paganucci.</p>
                     </div>
                 </div>
-                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar</button>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
             </div>
 
-            <div id="pag5" class="pagina-conteudo">
-                <h2>04 // Fale Comigo</h2>
+            <!-- ================= SUBPÁGINAS: PROJETO RECOMPOSIÇÃO ================= -->
+            <div id="recomp_tutor" class="pagina-conteudo">
+                <h2>Projeto Recomposição</h2>
+                <span class="badge-subaba">Professor Tutor</span>
+                <p class="texto-bio">O papel do Professor Tutor no ambiente de recomposição pedagógica foca no acompanhamento próximo e individualizado dos estudantes que apresentam defasagens específicas. Através de diagnósticos contínuos, traçamos metas personalizadas para recuperar habilidades essenciais, garantindo acolhimento e engajamento escolar ativo.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <div id="recomp_eletivas" class="pagina-conteudo">
+                <h2>Projeto Recomposição</h2>
+                <span class="badge-subaba">Eletivas Fundamentos</span>
+                <p class="texto-bio">As disciplinas Eletivas voltadas aos Fundamentos conectam a base curricular a projetos de interesse dos alunos. Unindo os conceitos de Ciências Humanas com abordagens inovadoras e de sustentabilidade, criamos pontes de interesse prático que solidificam a retenção de conteúdo conceitual.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <div id="recomp_orientacao" class="pagina-conteudo">
+                <h2>Projeto Recomposição</h2>
+                <span class="badge-subaba">Orientação de Estudos</span>
+                <p class="texto-bio">A Orientação de Estudos provê técnicas metodológicas de organização, rotina, leitura ativa e resumos analíticos. O foco central é ensinar o estudante a aprender com autonomia, otimizando o uso do tempo na escola e potencializando o uso de laboratórios e plataformas online.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <!-- ================= SUBPÁGINAS: PLATAFORMAS ================= -->
+            <div id="plat_matific" class="pagina-conteudo">
+                <h2>Plataformas</h2>
+                <span class="badge-subaba">Matific</span>
+                <p class="texto-bio">A plataforma Matific introduz o aprendizado matemático por meio de desafios baseados em jogos interativos. Como PROATI, atuamos no suporte técnico do laboratório e na garantia de acesso contínuo aos jogos pedagógicos que desenvolvem o raciocínio lógico dos estudantes do Paganucci.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <div id="plat_alura" class="pagina-conteudo">
+                <h2>Plataformas</h2>
+                <span class="badge-subaba">Alura</span>
+                <p class="texto-bio">With a focus on Computational Thinking and Technology, integrating Alura platform opens horizons for technological literacy. We guide learning tracks so students seamlessly grasp practical programming concepts.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <div id="plat_redacao" class="pagina-conteudo">
+                <h2>Plataformas</h2>
+                <span class="badge-subaba">Redação e Leitura</span>
+                <p class="texto-bio">Focada na evolução da competência escrita e analítica, esta seção apoia a aplicação das ferramentas oficiais de escrita e leitura do Estado. O acompanhamento contínuo visa refinar a interpretação textual crítica nas avaliações formativas periódicas.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <div id="plat_speak" class="pagina-conteudo">
+                <h2>Plataformas</h2>
+                <span class="badge-subaba">Speak</span>
+                <p class="texto-bio">A plataforma Speak estimula a fluência linguística em novos idiomas por intermédio de dinâmicas interativas e de reconhecimento de voz. Monitoramos o engajamento e a correta usabilidade dos fones e computadores durante as sessões práticas de pronúncia.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <div id="plat_tarefas" class="pagina-conteudo">
+                <h2>Plataformas</h2>
+                <span class="badge-subaba">Tarefas</span>
+                <p class="texto-bio">Gerenciamento centralizado de atividades vinculadas diretamente às matrizes de competência das aulas regulares. O acompanhamento em tempo real permite aos docentes identificar pontos de atenção imediata e realizar intervenções assertivas.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <div id="plat_copa" class="pagina-conteudo">
+                <h2>Plataformas</h2>
+                <span class="badge-subaba">Copa da Escola</span>
+                <p class="texto-bio">A Copa da Escola é uma estratégia de gamificação saudável baseada em indicadores de participação e realização de tarefas digitais pelas salas de aula. Uma iniciativa voltada a aumentar o engajamento estudantil e a colaboração mútua no ambiente escolar.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <!-- ================= SUBPÁGINAS: PROJETOS ================= -->
+            <div id="proj_erer" class="pagina-conteudo">
+                <h2>Projetos</h2>
+                <span class="badge-subaba">ERER (Educação para as Relações Étnico-Raciais)</span>
+                <p class="texto-bio">O projeto ERER desenvolve atividades transversais voltadas para a valorização da história e cultura afro-brasileira e indígena. Por meio de debates sociológicos, oficinas criativas e análises históricas profundas, promovemos a igualdade e o combate ao racismo estrutural.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <div id="proj_genero" class="pagina-conteudo">
+                <h2>Projetos</h2>
+                <span class="badge-subaba">Diversidade de Gênero</span>
+                <p class="texto-bio">Ações focadas na construção de um ambiente de respeito mútuo, empatia e pluralidade. O trabalho pedagógico foca na conscientização contra violências de gênero e na garantia de que a instituição de ensino permaneça acolhedora para absolutamente todos os estudantes.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <!-- ================= SUBPÁGINAS: CONVIVA ================= -->
+            <div id="conv_projetos" class="pagina-conteudo">
+                <h2>Conviva</h2>
+                <span class="badge-subaba">Projetos</span>
+                <p class="texto-bio">Projetos integrados de convivência social e de melhoria no clima escolar. O Programa Conviva atua de forma preventiva na resolução de conflitos interpessoais, aplicando dinâmicas coletivas para sedimentar os valores de união escolar.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <div id="conv_acoes" class="pagina-conteudo">
+                <h2>Conviva</h2>
+                <span class="badge-subaba">Ações Práticas</span>
+                <p class="texto-bio">Execução rotineira de acolhimentos na entrada, escuta ativa e mediação de conflitos cotidianos. Estas ações garantem que a vulnerabilidade externa sofrida pela comunidade encontre na escola um ponto de equilíbrio e estabilidade emocional.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <!-- ================= ESCOLA DOS SONHOS ================= -->
+            <div id="escola_sonhos" class="pagina-conteudo">
+                <h2>Escola dos Sonhos</h2>
+                <p class="texto-bio">O conceito de Escola dos Sonhos engloba o plano idealizado e construído coletivamente de uma educação libertadora, participativa e totalmente digital. Um espaço onde a infraestrutura física e os recursos tecnológicos modernos atuem em perfeita harmonia com o projeto de vida de cada um de nossos estudantes.</p>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
+            </div>
+
+            <!-- ================= CONTATO ================= -->
+            <div id="pag_contato" class="pagina-conteudo">
+                <h2>Fale Comigo</h2>
                 
                 <div class="dados-pessoais">
                     <p>📧 aleandrosantos@prof.educacao.sp.gov.br</p>
@@ -354,7 +501,7 @@
                     </a>
                 </div>
 
-                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar</button>
+                <button type="button" class="btn-voltar" onclick="mudarPagina('pag1')">Voltar ao Menu</button>
             </div>
 
         </div>
@@ -376,8 +523,8 @@
                 document.querySelector('.area-conteudo-paginas').scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            // 3. Gerenciar o vídeo (Se for a página 5, carrega. Se sair, para.)
-            if (idPaginaDestino === 'pag5') {
+            // 3. Gerenciar o vídeo
+            if (idPaginaDestino === 'pag_contato') {
                 restoreVideo();
             } else {
                 stopVideo();
@@ -388,14 +535,14 @@
         function stopVideo() {
             const iframe = document.getElementById('youtube-player');
             if (iframe) {
-                iframe.src = ""; // Remove o vídeo da memória
+                iframe.src = ""; 
             }
         }
 
         function restoreVideo() {
             const iframe = document.getElementById('youtube-player');
             if (iframe && iframe.dataset.src) {
-                iframe.src = iframe.dataset.src; // Recoloca o link para funcionar
+                iframe.src = iframe.dataset.src; 
             }
         }
 
@@ -429,19 +576,17 @@
         }
         setInterval(clicarSlideAtual, 4000);
 
-        // --- VERIFICAÇÃO INICIAL (PARA O VÍDEO NÃO FALHAR SE A PÁGINA JÁ COMEÇAR LÁ) ---
+        // --- VERIFICAÇÃO INICIAL ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Se a página 5 já estiver visível ao carregar, ativa o vídeo imediatamente
-            const pag5 = document.getElementById('pag5');
-            if (pag5 && pag5.classList.contains('ativa') && window.getComputedStyle(pag5).display !== 'none') {
+            const pagContato = document.getElementById('pag_contato');
+            if (pagContato && pagContato.classList.contains('ativa') && window.getComputedStyle(pagContato).display !== 'none') {
                 restoreVideo();
             }
         });
         
-        // Listener de segurança para parar áudio se trocar de aba do navegador
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) stopVideo();
-            else if (document.getElementById('pag5').classList.contains('ativa')) restoreVideo();
+            else if (document.getElementById('pag_contato').classList.contains('ativa')) restoreVideo();
         });
     </script>
 </body>
